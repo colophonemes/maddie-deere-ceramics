@@ -3,6 +3,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  @include responsive-square(56.25%);
+  @include responsive-square(75%);
   margin-bottom: $grid-gutter-width / 2;
 }
