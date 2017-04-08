@@ -68,7 +68,7 @@ const layoutUtils = {
 }
 
 const shortcodeOpts = Object.assign({
-  directory: paths.templates('shortcodes'),
+  directory: paths.layouts('shortcodes'),
   pattern: '**/*.html',
   engine: 'pug',
   extension: '.pug'

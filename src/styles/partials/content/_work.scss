@@ -1,0 +1,6 @@
+.work-sidebar-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  @include responsive-square(56.25%);
+}

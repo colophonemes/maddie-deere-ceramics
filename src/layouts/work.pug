@@ -1,0 +1,22 @@
+extends ./page
+
+
+
+
+block content
+  #content
+    .row
+      .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+        .row
+          section.work-images.col-md-8
+            img.work-sidebar-img(src=contentfulImage(images[0]))
+            if images.length > 1
+              .row
+                each image in images.slice(1)
+                  .col-md-6
+                    img.work-sidebar-img(src=contentfulImage(images))
+
+
+          section.work-description.col-md-4
+            != contents
+            block postContent

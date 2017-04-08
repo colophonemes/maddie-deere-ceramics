@@ -1,14 +1,14 @@
 // FONT FACES
-$font-family-serif: Merriweather, Georgia, Garamond, 'Times New Roman', serif;
-$font-family-sans-serif: Raleway, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif: Lora, Georgia, Garamond, 'Times New Roman', serif;
+$font-family-sans-serif: Bevan, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$font-weight-normal: 300;
+$font-weight-normal: 400;
 $font-weight-bold: 700;
 // COLOURS
 
-$site-primary: #0C869B;
-$site-secondary: #00B2BE;
-$site-muted: #EEE;
+$site-primary: $color-primary-0;
+$site-secondary: $color-complement-0;
+$site-muted: $color-secondary-1-0;
 $site-dark-gray: #333;
 
 

@@ -1,0 +1,15 @@
+form.form(netlify)
+  .form-group
+    label.control-label Email Address
+    input.form-control(name='email' placeholder='you@domain.com')
+  .form-group
+    label.control-label Subject
+    input.form-control(name='subject' placeholder='Subject')
+  .form-group
+    label.control-label Message
+    textarea.form-control(name='message' placeholder='Your message...')
+  .form-group
+    .row
+      .col-sm-6.col-sm-offset-3.col-lg-4.col-lg-offset-4
+        button.btn.btn-primary.btn-block(type='submit') Send message
+          i.fa.fa-paper-plane
