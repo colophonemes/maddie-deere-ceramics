@@ -1,9 +1,9 @@
 {
-  "title" : "Contentful Metalsmith Boilerplate",
-  "domain" : "contentful-metalsmith-demo.netlify.com",
-  "protocol" : "http://",
-  "description": "Boilerplate for getting a Contentful/Metalsmith site up and running quickly",
-  "keywords": "contentful, metalsmith, netlify, boilerplate",
+  "title" : "Maddie Deere Ceramics",
+  "domain" : "www.maddiedeereceramics.com",
+  "protocol" : "https://",
+  "description": "Plates, Mugs, Bowls, Bottles and other Ceramics by South Australian artist Maddie Deere",
+  "keywords": "pottery, plates, cups, mugs, bowls, bottles, jars, custom",
   "logo": "https://images.contentful.com/y6x5dbm6rf7a/2XaMo3nQKAoM6gKoAkqUmM/40b76c91253b58e430284a7371c9f13b/logo-primary-1200x1357.png",
   "social": {
     "twitter": false
