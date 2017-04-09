@@ -33,16 +33,17 @@ block append postContent
         .modal-body
   script.
     loadScript(function () {
-      (function ($) {
+      (function ($, lazySizes) {
         var modal = $('#work-modal')
         modal.modal({show:false})
         $('.work-sidebar-img').click(function() {
           var el = $(this)
           modal.modal('show')
           modal.find('.modal-body').html(el.clone())
+          lazySizes.autoSizer.checkElems()
         })
         $('.work-modal-close').click(function () {
           modal.modal('hide')
         })
-      })(jQuery)
+      })(jQuery, lazySizes)
     })
