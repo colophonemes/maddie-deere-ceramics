@@ -1,5 +1,5 @@
 //- Facebook / Open Graph
-- var defaultLogo = url.parse(site.logo)
+- var defaultLogo = url.parse(site.ogImage)
 - delete defaultLogo.search
 - defaultLogo.query = { fit: pad, bg: white };
 - defaultLogo = url.format(defaultLogo)
@@ -36,7 +36,7 @@ meta(property="og:locale" content="en_US")
 meta(property="og:site_name" content=site.title)
 
 //- OG Image tags info
-- var ogImage = ogImage || featuredImage || photo || image|| thumbnail || false
+- var ogImage = ogImage || featuredImage || photo || image || (images && images[0]) || thumbnail || false
 if ogImage
 	- var ogImageURL = contentfulImage(ogImage)
 else
