@@ -5,6 +5,10 @@
   background-repeat: no-repeat;
   @include responsive-square(75%);
   margin-bottom: $grid-gutter-width / 2;
+  cursor: pointer;
+  img {
+    opacity: 0;
+  }
 }
 
 #work-modal {
