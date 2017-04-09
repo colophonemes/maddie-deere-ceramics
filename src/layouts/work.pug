@@ -40,7 +40,9 @@ block append postContent
           var el = $(this)
           modal.modal('show')
           modal.find('.modal-body').html(el.clone())
-          lazySizes.autoSizer.checkElems()
+          setTimeout(function () {
+            lazySizes.autoSizer.checkElems()
+          }, 30)
         })
         $('.work-modal-close').click(function () {
           modal.modal('hide')
