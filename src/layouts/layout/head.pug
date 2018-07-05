@@ -1,7 +1,7 @@
 head
     - var collectionSlug = collectionSlug || collections[collection] && collections[collection].metadata && collections[collection].metadata.singular ? collections[collection]['metadata']['singular'] : "";
     -var description = description || excerpt || site.description;
-    
+
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     title
@@ -41,7 +41,7 @@ head
     if environment !== 'development'
         script.
             // load the script
-            analytics.load("8lQAgq79j6dpHzH64IAekG93xtC5HZFg");
+            analytics.load('#{site.segmentSourceId}');
             analytics.page('#{title}')
         if slug === '404'
             script.
