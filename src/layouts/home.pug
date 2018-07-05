@@ -4,25 +4,40 @@ block header
     header#header
         include ./layout/header.pug
         +headerLogo()
-        h1.page-title.sr-only!= typogr.typogrify(title)
+        h1.page-title.sr-only!= typogr.typogrify(site.title)
 
 block content
     .home-content#content
-        section.home-section
+        section.home-section.home-section-content
                 .row
                     .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
                         != contents
-                if works
-                  section.home-section.home-section-latest-work
-                    .row
-                      .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
-                        include ./components/cards
-                        h2.home-section-title Latest work
-                          small.pull-right
-                            a(href='/works') See More 
-                              i.fa.fa-chevron-right
-                        .row
-                          each work in works.slice(0,3)
-                            .work
-                              .col-sm-4
-                                +card(work)
+        section.home-section.home-section-connect
+            .row
+              .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+                h2.home-section-title Connect
+                .row
+                  .col-xs-6
+                    .home-section-connect-social-link
+                      a(href="https://www.instagram.com/maddiedeereceramics/")
+                        i.fa.fa-instagram
+                        |  Instagram
+                  .col-xs-6
+                    .home-section-connect-social-link
+                      a(href="https://www.facebook.com/maddiedeereceramics/")
+                        i.fa.fa-facebook
+                        |  Facebook
+        if works
+          section.home-section.home-section-latest-work
+            .row
+              .col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+                include ./components/cards
+                h2.home-section-title Latest work
+                  small.pull-right
+                    a(href='/works') See More
+                      i.fa.fa-chevron-right
+                .row
+                  each work in works.slice(0,3)
+                    .work
+                      .col-sm-4
+                        +card(work)
