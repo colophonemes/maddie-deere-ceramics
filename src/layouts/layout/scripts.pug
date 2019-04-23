@@ -1,4 +1,7 @@
 script#app-script(src='/scripts/app.min.js' type="application/x-no-execution" async)
 script(src='/scripts/loader.min.js' async)
 if environment === 'production'
-	//- production-only scripts go here
+  //- production-only scripts go here
+  script(type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false")
+  script.
+    window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"527655c7f5d89603d41a32088","lid":"e9667da2aa","uniqueMethods":true}) })
