@@ -5,7 +5,7 @@
 **********************/
 
 // load environment variables
-require('dotenv').load({silent: true})
+require('dotenv').config({silent: true})
 var console = require('better-console')
 // get path helpers
 const paths = require('../lib/helpers/file-paths')
@@ -64,7 +64,6 @@ const layoutUtils = {
   slugify: require('slug'),
   strip: require(paths.helpers('strip-tags')),
   contentfulImage: require(paths.helpers('contentful-image')),
-  environment: process.env.NODE_ENV
 }
 
 const shortcodeOpts = Object.assign({
@@ -125,6 +124,14 @@ function build (buildCount) {
       .use(ignore([
         '**/.DS_Store'
       ]))
+      .use(function (files, metalsmith, done) {
+        const meta = metalsmith.metadata()
+        Object.assign(meta, {
+          helpers: {...layoutUtils},
+          environment: process.env.NODE_ENV
+        })
+        done()
+      })
       .use(injectSiteMetadata())
       .use(injectContentfulFiles(contentTypes.contentful))
       .use(_message.info('Prepared global metadata'))
@@ -200,12 +207,13 @@ function build (buildCount) {
         .use(_message.info('Created favicons'))
     }
     metalsmith
-      .use(layouts(Object.assign({
-        engine: 'pug',
-        directory: paths.layouts(),
-        pretty: process.env.NODE_ENV === 'development',
-        cache: true
-      }, layoutUtils)))
+      .use(layouts({
+        directory: '../src/layouts',
+        engineOptions: {
+          pretty: process.env.NODE_ENV === 'development',
+          cache: true
+        }
+      }))
       .use(_message.info('Built HTML files from templates'))
       .use(icons({
         fontDir: 'fonts'

@@ -1,13 +1,13 @@
 if file
-	- var hostname = url.parse(file.uri).hostname
+	- var hostname = helpers.url.parse(file.uri).hostname
 	- var embed = embedHostnames.indexOf(hostname) > -1
 	article.series-item.series-link
 		h3.series-item-title(class=useNumbering?'series-item-title-numbered':'')
 			a(href=file.uri target="_blank")
 				if useNumbering
-					| #{index+1}. 
+					| #{index+1}.
 				!= file.title
-				|  
+				|
 			| &nbsp;#[i.fa.fa-external-link]
 		if embed
 			.series-item-embed

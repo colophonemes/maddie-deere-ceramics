@@ -8,7 +8,7 @@ mixin headerLogo(type)
 					include ../components/logo
 
 mixin headerText(title)
-	h1.page-title#page-title!= typogr.typogrify(title)
+	h1.page-title#page-title!= helpers.typogr.typogrify(title)
 
 mixin header(options)
 	- var opts = options || {};

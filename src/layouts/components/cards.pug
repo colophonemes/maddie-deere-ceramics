@@ -4,7 +4,7 @@ mixin card(item, opts)
 			p
 				strong Error
 				|  item not passed to item card
-	else 
+	else
 		//- Set options
 		- var options = opts || {}
 		- var aspectPercentage = options.aspect ? options.aspect + (options.aspect.substr(options.aspect.length-1,1) === '%'?'':'%') : false;
@@ -15,7 +15,7 @@ mixin card(item, opts)
 		//- merge generic flags into thumbnail styles
 		- var thumbnailStyles = {};
 		if thumbnail
-			- thumbnailUrl = contentfulImage(thumbnail)
+			- thumbnailUrl = helpers.contentfulImage(thumbnail)
 			- thumbnailStyles['background-image'] = 'url('+thumbnailUrl+')'
 		else
 			- cardClasses.push('card-no-thumbnail')
@@ -28,4 +28,4 @@ mixin card(item, opts)
 					a.card-thumbnail-link(href=item.path)
 			figcaption.card-caption
 				h4.card-title
-					a(href=item.path)!= typogr.typogrify(item.title)
+					a(href=item.path)!= helpers.typogr.typogrify(item.title)

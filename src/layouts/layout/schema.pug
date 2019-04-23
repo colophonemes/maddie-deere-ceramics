@@ -1,19 +1,19 @@
 //- Facebook / Open Graph
-- var defaultLogo = url.parse(site.ogImage)
+- var defaultLogo = helpers.url.parse(site.ogImage)
 - delete defaultLogo.search
 - defaultLogo.query = { fit: pad, bg: white };
-- defaultLogo = url.format(defaultLogo)
+- defaultLogo = helpers.url.format(defaultLogo)
 
 mixin ogImageTags(contentfulImageURL)
 	- var sizes = [[1200,650],[300,300],[180,110],[120,120]]
 	each size in sizes
-		- var imageUrl = url.parse(contentfulImageURL, true)
+		- var imageUrl = helpers.url.parse(contentfulImageURL, true)
 		- delete imageUrl.search
 		- imageUrl.query.w = size[0]
 		- imageUrl.query.h = size[1]
 		if !imageUrl.query.fit
 			- imageUrl.query.fit = 'thumb'
-		meta(property="og:image" content=url.format(imageUrl))
+		meta(property="og:image" content=helpers.url.format(imageUrl))
 		meta(property="og:image:width" content=size[0])
 		meta(property="og:image:height" content=size[1])
 
@@ -22,7 +22,7 @@ case collectionSlug
 	when 'talk'
 		meta(property="og:video" content=oembed.html.match(/src=\"(.+?)\"/i)[1])
 		meta(property="og:type" content='video.other')
-	default 
+	default
 		meta(property="og:type" content='website')
 
 //- OG Title / URL / Description
@@ -31,14 +31,14 @@ if slug === 'home'
 	- ogTitle = site.title + (site.shortDescription ? ' - ' + site.shortDescription : '')
 meta(property="og:title" content=ogTitle)
 meta(property="og:url" content=canonical)
-meta(property="og:description" content=strip(description))
+meta(property="og:description" content=helpers.strip(description))
 meta(property="og:locale" content="en_US")
 meta(property="og:site_name" content=site.title)
 
 //- OG Image tags info
 - var ogImage = ogImage || featuredImage || photo || image || (images && images[0]) || thumbnail || false
 if ogImage
-	- var ogImageURL = contentfulImage(ogImage)
+	- var ogImageURL = helpers.contentfulImage(ogImage)
 else
 	- var ogImageURL = defaultLogo
 +ogImageTags(ogImageURL)
@@ -51,13 +51,13 @@ if site.social.twitter
 - var twimgOpts = {w:300,h:300,fit:'thumb'};
 - var twimg = featuredImage || photo || image || thumbnail || false
 if twimg
-	- var twitterImage = contentfulImage(twimg,twimgOpts)
-else 
-	- var twimgUrl = url.parse(defaultLogo, true)
+	- var twitterImage = helpers.contentfulImage(twimg,twimgOpts)
+else
+	- var twimgUrl = helpers.url.parse(defaultLogo, true)
 	- delete twimgUrl.search
-	- twimgUrl.query.w = twimgOpts.w 
-	- twimgUrl.query.h = twimgOpts.h 
-	- var twitterImage = url.format(twimgUrl)
+	- twimgUrl.query.w = twimgOpts.w
+	- twimgUrl.query.h = twimgOpts.h
+	- var twitterImage = helpers.url.format(twimgUrl)
 meta(name="twitter:image" content=twitterImage)
 //- JSON Schema
 case collectionSlug
@@ -68,11 +68,11 @@ case collectionSlug
 				"@type": "VideoObject",
 				"url": "#{canonical}",
 				"name": "#{title}",
-				"description": "#{strip(description)}",
-				"thumbnailUrl": "#{contentfulImage(thumbnail,{w:1920,h:1080})}",
+				"description": "#{helpers.strip(description)}",
+				"thumbnailUrl": "#{helpers.contentfulImage(thumbnail,{w:1920,h:1080})}",
 				"embedUrl": "#{oembed ? oembed.html.match(/src=\"(.+?)\"/i)[1] : embedUrl || canonical || 'false'}",
-				"datePublished": "#{moment(date).toISOString()}",
-				"uploadDate": "#{moment(date).toISOString()}"
+				"datePublished": "#{helpers.moment(date).toISOString()}",
+				"uploadDate": "#{helpers.moment(date).toISOString()}"
 			}
 	when 'person'
 		script(type="application/ld+json").

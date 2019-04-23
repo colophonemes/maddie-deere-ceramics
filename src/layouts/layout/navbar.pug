@@ -16,4 +16,4 @@ nav#navbar-main.navbar.navbar-primary.navbar-fixed-top.nav-minimal
                                     a(href=file.path, id="navbar-link-"+file.slug, title=file.title)!= file.shortTitle || file.title
                             when 'link'
                                 li.nav(class=(file.uri.substr(0,1)==='/' && path.replace(/\//g,'') === file.uri.replace(/\//g,'') ? 'active' : ''))
-                                    a(href=file.uri id="navbar-link-"+slugify(file.title) target=file.uri.substr(0,1)==='/'?false:'_blank')!= file.title
+                                    a(href=file.uri id="navbar-link-"+helpers.slugify(file.title) target=file.uri.substr(0,1)==='/'?false:'_blank')!= file.title
